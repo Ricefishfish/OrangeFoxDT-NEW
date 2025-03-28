@@ -1,0 +1,36 @@
+# Mount point       FS           Device               2nd Device                 Flags
+/system 			ext4	/dev/block/bootdevice/by-name/system		flags=slotselect;display="System";backup=1;wipeingui;flashimg=1
+/data                       ext4     /dev/block/bootdevice/by-name/userdata            flags=display="Internal Storage";backup=1
+/boot               emmc         /dev/block/bootdevice/by-name/boot              flags=slotselect=backup=1;display="Boot";flashimg=1
+/dtbo               emmc         /dev/block/bootdevice/by-name/dtbo              flags=slotselect=backup=1;display="DTBO Image";flashimg=1
+/vbmeta             emmc         /dev/block/bootdevice/by-name/vbmeta            flags=slotselect=backup=1;display="Vbmeta Image"flashimg=1
+
+# ETC Moint Point
+/cache              ext4         /dev/block/bootdevice/by-name/cache             flags=display="Cache";backup=1;wipeingui
+/metadata           ext4         /dev/block/bootdevice/by-name/metadata          flags=display="Metadata";backup=1;wipeingui
+
+# Persist Point
+/persist            ext4         /dev/block/bootdevice/by-name/persist           flags=display="Persist";backup=1
+/persist_image      emmc         /dev/block/bootdevice/by-name/persist           flags=display="Persist Image";backup=1;flashimg=1
+
+# Modem/EFS Mount Point (Combo)
+/efs                emmc         /dev/block/bootdevice/by-name/efs               flags=display="EFS";backup=1;flashimg=1
+/modem         emmc         /dev/block/bootdevice/by-name/modem        flags=slotselect;subpartitionof=/efs;backup=1
+/modemst1           emmc         /dev/block/bootdevice/by-name/modemst1          flags=subpartitionof=/efs;backup=1
+/modemst2           emmc         /dev/block/bootdevice/by-name/modemst2          flags=subpartitionof=/efs;backup=1
+/ftm                      emmc         /dev/block/bootdevice/by-name/ftm                    flags=subpartitionof=/efs;backup=1
+/fsc                       emmc         /dev/block/bootdevice/by-name/fsc                    flags=subpartitionof=/efs;backup=1
+/fsg                       emmc         /dev/block/bootdevice/by-name/fsg                    flags=subpartitionof=/efs;backup=1
+ 
+# SD Card & USB-OTG Points
+/sdcard            vfat        /dev/block/mmcblk0p1      flags=display="sdcard";storage;wipeingui;removable
+/usb_otg            vfat         /dev/block/sdg1           flags=display="USB-Storage";storage;wipeingui;removable
+
+/misc                       emmc     /dev/block/bootdevice/by-name/misc                flags=display="misc"
+/mnt/vendor/persist-lg      ext4     /dev/block/bootdevice/by-name/drm                 flags=display="persist-lg"
+/mnt/product/persist-lg     ext4     /dev/block/bootdevice/by-name/p_persist_lg        flags=display="persist-lg"
+/mnt/product/els            ext4     /dev/block/bootdevice/by-name/els                 flags=display="els"
+/mnt/product/quality        ext4     /dev/block/bootdevice/by-name/operatorlogging     flags=display="quality"
+/mnt/product/eri            ext4     /dev/block/bootdevice/by-name/eri                 flags=display="eri"
+/mnt/product/carrier        ext4     /dev/block/bootdevice/by-name/carrier             flags=display="carrier"
+/mnt/vendor/absolute        ext4     /dev/block/bootdevice/by-name/persdata            flags=display="absolute"
